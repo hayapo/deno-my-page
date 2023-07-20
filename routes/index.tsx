@@ -40,7 +40,7 @@ export default function Home({ data }: PageProps<BioType | null>) {
             Try updating this message in the
             <code class="mx-2">./routes/index.tsx</code> file, and refresh.
           </p>
-          <p>{data.handleName}</p>
+          <p>{data.currentStatus}</p>
           <Counter count={count} />
         </div>
       </div>

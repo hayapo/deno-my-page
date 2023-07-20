@@ -4,6 +4,10 @@ export type TestType = {
 };
 
 export type BioType = {
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date;
+  revisedAt: Date;
   lastNameJa: string;
   firstNameJa: string;
   lastNameEn: string;

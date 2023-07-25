@@ -4,17 +4,17 @@ export type TestType = {
 };
 
 export type BioType = {
-  createdAt: Date;
-  updatedAt: Date;
-  publishedAt: Date;
-  revisedAt: Date;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  revisedAt: string;
   lastNameJa: string;
   firstNameJa: string;
   lastNameEn: string;
   firstNameEn: string;
   handleName: string;
   age: number;
-  dateOfBirth: Date;
+  dateOfBirth: string;
   languages: string[];
   nationality: string;
   currentJob: string;
@@ -26,7 +26,17 @@ export type BioType = {
   degree: string;
   prefectureFrom: string;
   whereLiving: string;
+  socials: Socials;
   career: Careers[];
+};
+
+export type Socials = {
+  fieldId: string;
+  github: string;
+  twitter: string;
+  mastodon: string;
+  discord: string;
+  zenn: string;
 };
 
 export type UniversityInfoItems = {
@@ -35,15 +45,15 @@ export type UniversityInfoItems = {
   major: string;
 };
 
-export type UniversityInfo<T> = [] | [T];
+export type UniversityInfo<T> = [T];
 
 export type Careers = {
   fieldId: string;
   isUniversity: boolean;
   isAffiliationEnded: boolean;
   affiliationName: string;
-  affiliationStartedAt: Date;
-  affiliationEndedAt?: Date;
+  affiliationStartedAt: string;
+  affiliationEndedAt?: string;
   content?: string;
   universityInfo?: UniversityInfo<UniversityInfoItems>;
 };

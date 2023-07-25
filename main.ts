@@ -6,10 +6,15 @@
 
 import "$std/dotenv/load.ts";
 
-import { start } from "$fresh/server.ts";
+import { RenderFunction, start } from "$fresh/server.ts";
 import manifest from "./fresh.gen.ts";
 
-import twindPlugin from "$fresh/plugins/twind.ts";
+import twindv1 from "$fresh/plugins/twindv1.ts";
 import twindConfig from "./twind.config.ts";
 
-await start(manifest, { plugins: [twindPlugin(twindConfig)] });
+const render: RenderFunction = (ctx, render) => {
+  const lang = ctx.url.pathname.substring(1, 3);
+  ctx.lang = lang === "en" ? lang : "ja";
+  render();
+};
+await start(manifest, { render, plugins: [twindv1(twindConfig)] });

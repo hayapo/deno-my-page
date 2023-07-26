@@ -38,7 +38,7 @@ export default function About({ data }: PageProps<BioType | null>) {
           height="250"
           alt="my avator icon: a pink hair girl with a black cloth"
         />
-        <SocialIcons socials={data.socials} class="my-5" />
+        <SocialIcons class="my-6" socials={data.socials} />
         <div class="flex flex-col gap-7 text-2xl">
           <div class="flex flex-col gap-2">
             <p class="text-5xl font-bold">{data.handleName}</p>
@@ -57,7 +57,7 @@ export default function About({ data }: PageProps<BioType | null>) {
               {languageList.join(" / ")}
             </p>
             <p>
-              趣味 <br />
+              趣味: <br />
               {hobbyList.join(" / ")}
             </p>
           </div>

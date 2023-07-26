@@ -11,45 +11,44 @@ type SocialIconsProps = {
 
 export function SocialIcons(props: SocialIconsProps) {
   const iconSize = 9;
-  // TODO: 重複しているので、反復処理に変更する
+  const socialIcons = [
+    {
+      name: "GitHub",
+      icon: <IconBrandGithub className={`w-${iconSize} h-${iconSize}`} />,
+      url: props.socials.github,
+    },
+    {
+      name: "Twitter",
+      icon: <IconBrandTwitter className={`w-${iconSize} h-${iconSize}`} />,
+      url: props.socials.twitter,
+    },
+    {
+      name: "Mastodon",
+      icon: <IconBrandMastodon className={`w-${iconSize} h-${iconSize}`} />,
+      url: props.socials.mastodon,
+    },
+    {
+      name: "Discord",
+      icon: <IconBrandDiscord className={`w-${iconSize} h-${iconSize}`} />,
+      url: props.socials.discord,
+    },
+  ]
+
   return (
-    <div class={`flex gap-4 items-center ${props.class}`}>
-      <a
-        href="https://github.com/hayapo"
-        class="inline-block hover:text-gray-500"
-        aria-label="GitHub"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <IconBrandGithub class={`w-${iconSize} h-${iconSize}`} />
-      </a>
-      <a
-        href={props.socials.twitter}
-        class="inline-block hover:text-gray-500"
-        aria-label="Twitter"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <IconBrandTwitter class={`w-${iconSize} h-${iconSize}`} />
-      </a>
-      <a
-        href={props.socials.mastodon}
-        class="inline-block hover:text-gray-500"
-        aria-label="Mastodon"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <IconBrandMastodon class={`w-${iconSize} h-${iconSize}`} />
-      </a>
-      <a
-        href={props.socials.discord}
-        class="inline-block hover:text-gray-500"
-        aria-label="Discord"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <IconBrandDiscord class={`w-${iconSize} h-${iconSize}`} />
-      </a>
+    <div className={`flex gap-4 items-center ${props.class}`}>
+      {
+        socialIcons.map((social) => (
+        <a
+          href={social.url}
+          class="inline-block hover:text-gray-500"
+          key={social.name}
+          aria-label="GitHub"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {social.icon}
+        </a>
+      ))}
     </div>
   );
 }

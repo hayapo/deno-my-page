@@ -5,7 +5,6 @@ import IconBrandDiscord from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/bra
 import { Socials } from "../types/microcmsResponseType.ts";
 
 type SocialIconsProps = {
-  class?: string;
   socials: Socials;
 };
 
@@ -32,12 +31,11 @@ export function SocialIcons(props: SocialIconsProps) {
       icon: <IconBrandDiscord className={`w-${iconSize} h-${iconSize}`} />,
       url: props.socials.discord,
     },
-  ]
+  ];
 
   return (
-    <div className={`flex gap-4 items-center ${props.class}`}>
-      {
-        socialIcons.map((social) => (
+    <div className={`flex gap-4 items-center`}>
+      {socialIcons.map((social) => (
         <a
           href={social.url}
           class="inline-block hover:text-gray-500"

@@ -30,39 +30,75 @@ export default function About({ data }: PageProps<BioType | null>) {
         <title>{data.handleName}'s Page</title>
       </Head>
       <NavBar isAbout={true} />
-      <div class="max-w-screen-lg mx-auto flex flex-col items-center justify-center font-mono text-center">
-        <img
-          class="mt-3 border-2 rounded-[30%] border-gray-400"
-          src="/avator_icon.svg"
-          width="250"
-          height="250"
-          alt="my avator icon: a pink hair girl with a black cloth"
-        />
-        <SocialIcons class="my-6" socials={data.socials} />
-        <div class="flex flex-col gap-7 text-2xl">
-          <div class="flex flex-col gap-2">
-            <p class="text-5xl font-bold">{data.handleName}</p>
-            <p>
-              {data.lastNameEn + " " + data.firstNameEn}
-            </p>
-          </div>
-          <div class="flex flex-col gap-2 text-2xl">
-            <p>age: {calcAge(data.dateOfBirth)}</p>
-            <p>{data.currentJob}やってます</p>
-            <p>@{data.whereLiving}</p>
-          </div>
-          <div class="flex flex-col gap-2 text-2xl">
-            <p>
-              好きな言語: <br />
-              {languageList.join(" / ")}
-            </p>
-            <p>
-              趣味: <br />
-              {hobbyList.join(" / ")}
-            </p>
-          </div>
+      <div class="max-w-screen-lg mx-auto flex flex-col gap-7 items-center justify-center font-mono text-center">
+        <Avator />
+        <SocialIcons socials={data.socials} />
+        <div class="flex flex-col gap-10">
+          <Name
+            handleName={data.handleName}
+            lastNameEn={data.lastNameEn}
+            firstNameEn={data.firstNameEn}
+          />
+          <Bio
+            dateOfBirth={data.dateOfBirth}
+            currentJob={data.currentJob}
+            whereLiving={data.whereLiving}
+          />
+          <Favorites languageList={languageList} hobbyList={hobbyList} />
         </div>
       </div>
     </>
+  );
+}
+
+function Avator() {
+  return (
+    <img
+      class="mt-3 border-2 rounded-[100%] border-gray-400"
+      src="/avator_icon.svg"
+      width="250"
+      height="250"
+      alt="my avator icon: a pink hair girl with a black cloth"
+    />
+  );
+}
+
+function Name(
+  props: { handleName: string; lastNameEn: string; firstNameEn: string },
+) {
+  return (
+    <div class="flex flex-col gap-2">
+      <p class="text-5xl font-bold">{props.handleName}</p>
+      <p class="text-2xl">
+        {props.lastNameEn + " " + props.firstNameEn}
+      </p>
+    </div>
+  );
+}
+
+function Bio(
+  props: { dateOfBirth: string; currentJob: string; whereLiving: string },
+) {
+  return (
+    <div class="flex flex-col gap-2 text-2xl">
+      <p>age: {calcAge(props.dateOfBirth)}</p>
+      <p>{props.currentJob}やってます</p>
+      <p>@{props.whereLiving}</p>
+    </div>
+  );
+}
+
+function Favorites(props: { languageList: string[]; hobbyList: string[] }) {
+  return (
+    <div class="flex flex-col gap-5 text-2xl">
+      <p>
+        好きな言語: <br />
+        {props.languageList.join(" / ")}
+      </p>
+      <p>
+        趣味: <br />
+        {props.hobbyList.join(" / ")}
+      </p>
+    </div>
   );
 }

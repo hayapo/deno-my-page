@@ -1,4 +1,4 @@
-import { NavBar } from "../../components/NavBar.tsx";
+import { NavBar } from "../components/NavBar.tsx";
 
 export default function Career() {
   return (

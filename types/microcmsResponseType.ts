@@ -1,9 +1,4 @@
-export type TestType = {
-  testTitle: string;
-  testBody: string;
-};
-
-export type BioType = {
+export type ProfileType = {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;

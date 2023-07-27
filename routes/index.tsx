@@ -1,4 +1,3 @@
-import { signal } from "preact";
 import { Head } from "$fresh/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { ProfileType } from "../types/microcmsResponseType.ts";

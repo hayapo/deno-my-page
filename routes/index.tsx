@@ -1,35 +1,35 @@
+import { signal } from "preact";
 import { Head } from "$fresh/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
-import { BioType } from "../types/microcmsResponseType.ts";
+import { ProfileType } from "../types/microcmsResponseType.ts";
 import { calcAge, microcmsClient, parseStringToArray } from "../lib/index.ts";
 import { NavBar, SocialIcons } from "../components/index.ts";
 
-export const handler: Handlers<BioType | null> = {
+const ENDPOINT = "bio_jp";
+
+export const handler: Handlers<ProfileType | null> = {
   async GET(_, ctx) {
     const bioData = await microcmsClient.get({
-      endpoint: "bio_jp",
+      endpoint: ENDPOINT,
       queries: { limit: 99 },
     });
     return ctx.render(bioData);
   },
 };
 
-export default function About({ data }: PageProps<BioType | null>) {
+export default function About({ data }: PageProps<ProfileType | null>) {
   if (!data) {
     return <h1>Bio data not found</h1>;
   }
-
   const languageList = parseStringToArray(data.favoriteLanguage);
   const hobbyList = parseStringToArray(data.hobby);
-
-  console.log(data);
 
   return (
     <>
       <Head>
         <title>{data.handleName}'s Page</title>
       </Head>
-      <NavBar isAbout={true} />
+      <NavBar isAbout />
       <div class="max-w-screen-lg mx-auto flex flex-col gap-7 items-center justify-center font-mono text-center">
         <Avator />
         <SocialIcons socials={data.socials} />

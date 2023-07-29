@@ -91,7 +91,7 @@ function Bio(
 ) {
   return (
     <div class="flex flex-col gap-2 text-2xl">
-      <p>age: {calcAge(props.dateOfBirth)}</p>
+      {/* <p>age: {calcAge(props.dateOfBirth)}</p> */}
       <p>{props.currentJob}やってます</p>
       <p>@{props.whereLiving}</p>
     </div>

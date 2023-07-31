@@ -22,7 +22,7 @@ export type ProfileType = {
   prefectureFrom: string;
   whereLiving: string;
   socials: Socials;
-  career: Careers[];
+  careers: Careers[];
 };
 
 export type Socials = {
@@ -40,7 +40,7 @@ export type UniversityInfoItems = {
   major: string;
 };
 
-export type UniversityInfo<T> = [T];
+export type UniversityInfo<T extends UniversityInfoItems> = [T];
 
 export type Careers = {
   fieldId: string;
@@ -49,6 +49,17 @@ export type Careers = {
   affiliationName: string;
   affiliationStartedAt: string;
   affiliationEndedAt?: string;
+  content?: string;
+  universityInfo?: UniversityInfo<UniversityInfoItems>;
+};
+
+export type ParsedCareers = {
+  fieldId: string;
+  isUniversity: boolean;
+  isAffiliationEnded: boolean;
+  affiliationName: string;
+  affiliationStartedAt: Date;
+  affiliationEndedAt?: Date;
   content?: string;
   universityInfo?: UniversityInfo<UniversityInfoItems>;
 };

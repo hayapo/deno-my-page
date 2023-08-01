@@ -1,5 +1,6 @@
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { ProfileType, TimelineItemType } from "../types/index.ts";
+import { CustomHead as Head } from "../components/index.ts";
 import {
   microcmsClient,
   parseCareerDate,
@@ -32,18 +33,25 @@ export default function Career({ data }: PageProps<ProfileType | null>) {
 
   return (
     <>
-      <div class="max-w-screen-lg mx-auto flex flex-col items-center justify-center font-mono text-center">
-        <div class="text-4xl">Career Page (In Development)</div>
-        <ul class="relative border-l border-gray-400">
-          {timelineItems.map((item, index) => (
-            <CareerTimelineItem
-              item={item}
-              index={index}
-            />
-          ))}
-        </ul>
-      </div>
+      <Head title="Career" description="hayapo's career page" />
+      <CareerTimeline items={timelineItems} />
     </>
+  );
+}
+
+function CareerTimeline(props: { items: TimelineItemType[] }) {
+  const items = props.items;
+  return (
+    <div class="p-10 font-sans">
+      <ul class="relative border-l border-gray-400">
+        {items.map((item, index) => (
+          <CareerTimelineItem
+            item={item}
+            index={index}
+          />
+        ))}
+      </ul>
+    </div>
   );
 }
 
@@ -62,15 +70,27 @@ function CareerTimelineItem(props: { item: TimelineItemType; index: number }) {
   return (
     <li
       key={`${affiliationType}-${index}`}
-      class="flex gap-3 items-center"
+      class="items-center mb-10 ml-4"
     >
-      <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white">
+      <div class="absolute w-4 h-4 bg-gray-200 rounded-full mt-1.5 -left-[0.510rem] border border-white">
       </div>
-      <p className="flex gap-3">
-        <span>{eventDateString + ongoingDateString}</span>
-        <span>{item.affiliationName}</span>
-        <span>{eventStatusString}</span>
-      </p>
+      <time
+        dateTime={`${item.eventDate.getFullYear()}-${
+          item.eventDate.getMonth() + 1
+        }`}
+        class="mb-1 text-xl"
+      >
+        {eventDateString + ongoingDateString}
+      </time>
+      <h3 class="text-2xl font-semibold">
+        {item.affiliationName + " " + eventStatusString}
+      </h3>
+      {item.universityInfo && (
+        <p class="text-gray-500 text-lg">
+          {item.universityInfo[0]?.facultyOrDepartment + " " +
+            item.universityInfo[0]?.major}
+        </p>
+      )}
     </li>
   );
 }
@@ -91,5 +111,7 @@ function CreateStatusString(
       return isUniversity ? "入学" : "入社";
     case "end":
       return isUniversity ? "卒業" : "退社";
+    default:
+      return "";
   }
 }

@@ -65,7 +65,7 @@ function Name(
   props: { handleName: string; lastNameEn: string; firstNameEn: string },
 ) {
   return (
-    <div class="flex flex-col gap-2">
+    <div class="flex flex-col gap-2 font-mono">
       <p class="text-5xl font-bold">{props.handleName}</p>
       <p class="text-2xl">
         {props.lastNameEn + " " + props.firstNameEn}
@@ -78,7 +78,7 @@ function Bio(
   props: { dateOfBirth: string; currentJob: string; whereLiving: string },
 ) {
   return (
-    <div class="flex flex-col gap-2 text-xl md:text-2xl font-sans">
+    <div class="flex flex-col gap-2 text-xl md:text-2xl font-mono">
       <p>{props.currentJob}やってます</p>
       <p>@{props.whereLiving}</p>
     </div>
@@ -87,7 +87,7 @@ function Bio(
 
 function Favorites(props: { languageList: string[]; hobbyList: string[] }) {
   return (
-    <div class="flex flex-col gap-5 text-xl md:text-2xl">
+    <div class="flex flex-col gap-5 text-xl md:text-2xl font-mono">
       <p>
         好きな言語: <br />
         {props.languageList.join(" / ")}

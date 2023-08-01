@@ -9,7 +9,7 @@ export function NavBar({ pathName }: NavBarProps) {
   return (
     <nav class="p-7 font-mono">
       <div class="flex mx-auto justify-center items-center">
-        <ul class="flex gap-[7em]">
+        <ul class="flex gap-[3em] sm:gap-[7em]">
           <li>
             <a
               href={isJapanese ? "/" : "/en"}

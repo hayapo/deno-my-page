@@ -34,7 +34,7 @@ export function SocialIcons(props: SocialIconsProps) {
   ];
 
   return (
-    <div className={`flex gap-4 items-center`}>
+    <div className="flex gap-4 items-center">
       {socialIcons.map((social) => (
         <a
           href={social.url}

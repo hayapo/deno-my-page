@@ -78,7 +78,7 @@ function Bio(
   props: { dateOfBirth: string; currentJob: string; whereLiving: string },
 ) {
   return (
-    <div class="flex flex-col gap-2 text-xl md:text-2xl font-sans font-semibold">
+    <div class="flex flex-col gap-2 text-xl md:text-2xl font-sans">
       <p>{props.currentJob}やってます</p>
       <p>@{props.whereLiving}</p>
     </div>

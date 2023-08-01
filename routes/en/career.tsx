@@ -13,7 +13,6 @@ const cache: Record<string, ProfileType> = {};
 export const handler: Handlers<ProfileType | null> = {
   async GET(_, ctx) {
     if (cache[ENDPOINT]) {
-      console.log("returned from cache");
       return ctx.render(cache[ENDPOINT]);
     }
 

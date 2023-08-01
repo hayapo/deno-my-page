@@ -9,7 +9,6 @@ const cache: Record<string, ProfileType> = {};
 export const handler: Handlers<ProfileType | null> = {
   async GET(_, ctx) {
     if (cache[ENDPOINT]) {
-      console.log("returned from cache");
       return ctx.render(cache[ENDPOINT]);
     }
 
@@ -18,7 +17,6 @@ export const handler: Handlers<ProfileType | null> = {
       queries: { limit: 99 },
     });
     cache[ENDPOINT] = profileData;
-    console.log(`api called`);
     return ctx.render(profileData);
   },
 };

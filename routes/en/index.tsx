@@ -1,12 +1,7 @@
-import { Head } from "$fresh/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { ProfileType } from "../../types/microcmsResponseType.ts";
-import {
-  calcAge,
-  microcmsClient,
-  parseStringToArray,
-} from "../../lib/index.ts";
-import { SocialIcons } from "../../components/index.ts";
+import { microcmsClient, parseStringToArray } from "../../lib/index.ts";
+import { CustomHead as Head, SocialIcons } from "../../components/index.ts";
 
 const ENDPOINT = "profile_en";
 const cache: Record<string, ProfileType> = {};
@@ -36,10 +31,7 @@ export default function About({ url, data }: PageProps<ProfileType | null>) {
   const hobbyList = parseStringToArray(data.hobby);
   return (
     <>
-      <Head>
-        <title>{data.handleName}'s Page</title>
-      </Head>
-      {/* <NavBar isAbout /> */}
+      <Head title="Home" />
       <div class="max-w-screen-lg mx-auto flex flex-col gap-7 items-center justify-center font-mono text-center">
         <Avator />
         <SocialIcons socials={data.socials} />
@@ -92,7 +84,7 @@ function Bio(
   return (
     <div class="flex flex-col gap-2 text-2xl">
       {/* <p>age: {calcAge(props.dateOfBirth)}</p> */}
-      <p>{props.currentJob}やってます</p>
+      <p>{props.currentJob}</p>
       <p>@{props.whereLiving}</p>
     </div>
   );

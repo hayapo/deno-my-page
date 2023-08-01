@@ -1,8 +1,7 @@
-import { Head } from "$fresh/runtime.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { ProfileType } from "../types/microcmsResponseType.ts";
-import { calcAge, microcmsClient, parseStringToArray } from "../lib/index.ts";
-import { SocialIcons } from "../components/index.ts";
+import { microcmsClient, parseStringToArray } from "../lib/index.ts";
+import { CustomHead as Head, SocialIcons } from "../components/index.ts";
 
 const ENDPOINT = "profile_jp";
 const cache: Record<string, ProfileType> = {};
@@ -30,13 +29,11 @@ export default function About({ data }: PageProps<ProfileType | null>) {
   const hobbyList = parseStringToArray(data.hobby);
   return (
     <>
-      <Head>
-        <title>{data.handleName}'s Page</title>
-      </Head>
-      <div class="max-w-screen-lg mx-auto flex flex-col gap-7 items-center justify-center font-mono text-center">
+      <Head title="Home" />
+      <div class="flex flex-col gap-4 justify-center items-center">
         <Avator />
         <SocialIcons socials={data.socials} />
-        <div class="flex flex-col gap-10">
+        <div class="flex flex-col gap-10 text-center font-mono">
           <Name
             handleName={data.handleName}
             lastNameEn={data.lastNameEn}

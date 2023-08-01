@@ -31,7 +31,7 @@ export default function About({ data }: PageProps<ProfileType | null>) {
       <div class="flex flex-col gap-4 justify-center items-center">
         <Avator />
         <SocialIcons socials={data.socials} />
-        <div class="flex flex-col gap-10 text-center font-mono">
+        <div class="flex flex-col gap-10 text-center">
           <Name
             handleName={data.handleName}
             lastNameEn={data.lastNameEn}
@@ -78,8 +78,7 @@ function Bio(
   props: { dateOfBirth: string; currentJob: string; whereLiving: string },
 ) {
   return (
-    <div class="flex flex-col gap-2 text-2xl">
-      {/* <p>age: {calcAge(props.dateOfBirth)}</p> */}
+    <div class="flex flex-col gap-2 text-xl md:text-2xl font-sans font-semibold">
       <p>{props.currentJob}やってます</p>
       <p>@{props.whereLiving}</p>
     </div>
@@ -88,7 +87,7 @@ function Bio(
 
 function Favorites(props: { languageList: string[]; hobbyList: string[] }) {
   return (
-    <div class="flex flex-col gap-5 text-2xl">
+    <div class="flex flex-col gap-5 text-xl md:text-2xl">
       <p>
         好きな言語: <br />
         {props.languageList.join(" / ")}

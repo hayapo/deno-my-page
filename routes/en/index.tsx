@@ -80,7 +80,7 @@ function Bio(
   props: { dateOfBirth: string; currentJob: string; whereLiving: string },
 ) {
   return (
-    <div class="flex flex-col gap-2 text-2xl">
+    <div class="flex flex-col gap-2 text-xl md:text-2xl">
       {/* <p>age: {calcAge(props.dateOfBirth)}</p> */}
       <p>{props.currentJob}</p>
       <p>@{props.whereLiving}</p>
@@ -90,7 +90,7 @@ function Bio(
 
 function Favorites(props: { languageList: string[]; hobbyList: string[] }) {
   return (
-    <div class="flex flex-col gap-5 text-2xl">
+    <div class="flex flex-col gap-5 text-xl md:text-2xl">
       <p>
         Favorite languages: <br />
         {props.languageList.join(" / ")}

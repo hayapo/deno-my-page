@@ -14,7 +14,7 @@ export function Layout({ pathName, children }: LayoutProps) {
   return (
     <div class="min-h-screen flex flex-col items-center">
       <NavBar isJapanese={isJapanese} isAbout={isAbout} />
-      <div class="max-w-screen-lg mx-auto flex flex-col items-center px-12 lg:px-0 pb-10">
+      <div class="w-full max-w-screen-lg mx-auto flex flex-col px-12 lg:px-0 pb-10 items-center">
         <LangSwitch
           className="ml-auto"
           isJapanese={isJapanese}

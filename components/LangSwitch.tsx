@@ -12,7 +12,7 @@ export function LangSwitch(
   const [switchLinkJp, switchLinkEn] = CreateSwitchLink(isJapanese, isAbout);
   return (
     <div
-      class={`relative flex gap-2 text-2xl font-mono font-semibold items-center justify-center ${className}`}
+      class={`flex gap-2 text-2xl font-mono font-semibold items-center justify-center ${className}`}
     >
       <IconGlobe class="w-8 h-8" />
       <div class="flex gap-1 text-gray-400">

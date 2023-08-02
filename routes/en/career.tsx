@@ -3,7 +3,7 @@ import { ProfileType, TimelineItemType } from "../../types/index.ts";
 import { CustomHead as Head } from "../../components/index.ts";
 import {
   microcmsClient,
-  parseCareerDate,
+  ParseCareerDate,
   sortAffiliationEvents,
 } from "../../lib/index.ts";
 
@@ -27,9 +27,8 @@ export const handler: Handlers<ProfileType | null> = {
 
 export default function Career({ data }: PageProps<ProfileType | null>) {
   if (!data || data.careers.length === 0) return <h1>Bio data not found</h1>;
-  const parsedCareers = data.careers.map((career) => parseCareerDate(career));
+  const parsedCareers = data.careers.map((career) => ParseCareerDate(career));
   const timelineItems = sortAffiliationEvents(parsedCareers);
-
   return (
     <>
       <Head title="Career" description="hayapo's career page" />
@@ -65,7 +64,6 @@ function CareerTimelineItem(props: { item: TimelineItemType; index: number }) {
     item.itemType,
     item.isUniversity,
   );
-
   return (
     <li
       key={`${affiliationType}-${index}`}

@@ -9,8 +9,6 @@ type LangSwitchProps = {
 export function LangSwitch(
   { className, isJapanese, isAbout }: LangSwitchProps,
 ) {
-  console.log(`isJapanese: ${isJapanese}`);
-  console.log(`isAbout: ${isAbout}`);
   const [switchLinkJp, switchLinkEn] = CreateSwitchLink(isJapanese, isAbout);
   return (
     <div

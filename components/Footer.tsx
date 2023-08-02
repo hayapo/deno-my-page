@@ -5,7 +5,7 @@ import { IconBrandFresh } from "./index.ts";
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer class="p-2 font-mono text-center">
+    <footer class="px-2 pb-6 font-mono text-center mt-auto">
       <div class="flex flex-col gap-3 text-gray-400 text-md items-center">
         <p>
           © {year} hayapo all rights reserved.

@@ -1,11 +1,9 @@
 type NavBarProps = {
-  pathName: string;
+  isJapanese: boolean;
+  isAbout: boolean;
 };
 
-export function NavBar({ pathName }: NavBarProps) {
-  const isJapanese = pathName.substring(1, 3) !== "en";
-  const isAbout = pathName === "/" || pathName === "/en";
-
+export function NavBar({ isJapanese, isAbout }: NavBarProps) {
   return (
     <nav class="p-7 font-mono">
       <div class="flex mx-auto justify-center items-center">

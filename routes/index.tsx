@@ -28,10 +28,10 @@ export default function About({ data }: PageProps<ProfileType | null>) {
   return (
     <>
       <Head title="Home" />
-      <div class="flex flex-col gap-4 justify-center items-center">
+      <div class="flex flex-col gap-4 justify-center items-center text-center">
         <Avator />
         <SocialIcons socials={data.socials} />
-        <div class="flex flex-col gap-10 text-center">
+        <div class="flex flex-col gap-5">
           <Name
             handleName={data.handleName}
             lastNameEn={data.lastNameEn}

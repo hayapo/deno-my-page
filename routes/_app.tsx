@@ -5,8 +5,7 @@ import { NavBar } from "../components/NavBar.tsx";
 export default function App({ Component, url }: AppProps) {
   return (
     <>
-      <NavBar pathName={url.pathname} />
-      <Layout>
+      <Layout pathName={url.pathname}>
         <Component />
       </Layout>
     </>

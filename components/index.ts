@@ -5,3 +5,4 @@ export * from "./Layout.tsx";
 export * from "./Head.tsx";
 export * from "./Footer.tsx";
 export * from "./FreshBrandIcon.tsx";
+export * from "./LangSwitch.tsx";

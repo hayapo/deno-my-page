@@ -70,7 +70,7 @@ function CareerTimelineItem(props: { item: TimelineItemType; index: number }) {
       key={`${affiliationType}-${index}`}
       class="items-center mb-10 ml-4"
     >
-      <div class="absolute w-4 h-4 bg-gray-200 rounded-full mt-1.5 -left-[0.510rem] border border-white">
+      <div class="absolute w-4 h-4 bg-gray-200 rounded-full mt-1.5 -left-[0.510rem] border border-gray-100 dark:border-gray-600">
       </div>
       <time
         dateTime={`${item.eventDate.getFullYear()}-${
@@ -84,7 +84,7 @@ function CareerTimelineItem(props: { item: TimelineItemType; index: number }) {
         {item.affiliationName + " " + eventStatusString}
       </h3>
       {item.universityInfo && (
-        <p class="text-gray-500 text-lg">
+        <p class="text-gray-500 dark:text-gray-300 text-lg">
           {item.universityInfo[0]?.facultyOrDepartment + " " +
             item.universityInfo[0]?.major}
         </p>

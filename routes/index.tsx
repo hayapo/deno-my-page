@@ -2,6 +2,7 @@ import { Handlers, PageProps } from "$fresh/server.ts";
 import { ProfileType } from "../types/microcmsResponseType.ts";
 import { microcmsClient, parseStringToArray } from "../lib/index.ts";
 import { CustomHead as Head, SocialIcons } from "../components/index.ts";
+import { darkModeColor } from "../lib/constants.ts";
 
 const ENDPOINT = "profile_jp";
 const cache: Record<string, ProfileType> = {};
@@ -28,7 +29,7 @@ export default function About({ data }: PageProps<ProfileType | null>) {
   return (
     <>
       <Head title="Home" />
-      <div class="flex flex-col gap-4 justify-center items-center text-center">
+      <div class="flex flex-col gap-4 justify-center items-center text-center mx-auto">
         <Avator />
         <SocialIcons socials={data.socials} />
         <div class="flex flex-col gap-5">
@@ -52,7 +53,7 @@ export default function About({ data }: PageProps<ProfileType | null>) {
 function Avator() {
   return (
     <img
-      class="mt-3 border-2 rounded-[100%] border-gray-400"
+      class={`border-4 rounded-[100%] border(gray-400 dark:${darkModeColor})`}
       src="/avator_icon.svg"
       width="250"
       height="250"

@@ -1,4 +1,3 @@
-import { LangSwitch } from "./LangSwitch.tsx";
 import type { ComponentChildren } from "preact";
 import { Footer } from "./Footer.tsx";
 import { NavBar } from "./NavBar.tsx";
@@ -14,14 +13,9 @@ export function Layout({ pathName, children }: LayoutProps) {
   return (
     <div class="min-h-screen flex flex-col items-center">
       <NavBar isJapanese={isJapanese} isAbout={isAbout} />
-      <div class="w-full max-w-screen-lg mx-auto flex flex-col px-12 lg:px-0 pb-10 items-center">
-        <LangSwitch
-          className="ml-auto"
-          isJapanese={isJapanese}
-          isAbout={isAbout}
-        />
+      <main class="max-w-screen-lg mx-auto flex flex-col px-9 lg:px-0 py-5">
         {children}
-      </div>
+      </main>
       <Footer />
     </div>
   );

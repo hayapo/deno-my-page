@@ -38,7 +38,7 @@ export function SocialIcons(props: SocialIconsProps) {
       {socialIcons.map((social) => (
         <a
           href={social.url}
-          class="inline-block hover:text-gray-500"
+          class="inline-block hover:text-gray-500 hover:dark:text-gray-400"
           key={social.name}
           aria-label="GitHub"
           target="_blank"

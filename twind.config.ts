@@ -8,4 +8,5 @@ export default {
     presets: [tailwind()],
   }),
   selfURL: import.meta.url,
+  darkMode: "class",
 } as Options;

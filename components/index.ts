@@ -6,3 +6,4 @@ export * from "./Head.tsx";
 export * from "./Footer.tsx";
 export * from "./FreshBrandIcon.tsx";
 export * from "./LangSwitch.tsx";
+export * from "./Button.tsx";

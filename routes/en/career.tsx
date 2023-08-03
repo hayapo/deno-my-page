@@ -83,7 +83,7 @@ function CareerTimelineItem(props: { item: TimelineItemType; index: number }) {
         {eventStatusString} {item.affiliationName}
       </h3>
       {item.universityInfo && (
-        <p class="text-gray-500 text-lg">
+        <p class="text-gray-500 dark:text-gray-300 text-lg">
           {item.universityInfo[0]?.facultyOrDepartment + " " +
             item.universityInfo[0]?.major}
         </p>

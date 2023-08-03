@@ -1,12 +1,13 @@
 import IconBrandDeno from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/brand-deno.tsx";
 import IconBrandGithub from "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/brand-github.tsx";
 import { IconBrandFresh } from "./index.ts";
+import { darkModeTextHover, lightModeTextHover } from "../lib/constants.ts";
 
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer class="px-2 pb-6 font-mono text-center mt-auto">
-      <div class="flex flex-col gap-3 text-gray-400 text-md items-center">
+    <footer class="px-2 pb-4 font-mono text-center my-auto">
+      <div class="flex flex-col gap-3 text-md items-center">
         <p>
           © {year} hayapo all rights reserved.
         </p>
@@ -14,7 +15,7 @@ export function Footer() {
           Build with
           <a
             href="https://deno.land/"
-            class="flex hover:underline hover:text-gray-600 gap-[2px] items-center"
+            class={`flex hover:underline gap-[2px] items-center hover:${lightModeTextHover} hover:dark:${darkModeTextHover}`}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Deno"
@@ -28,7 +29,7 @@ export function Footer() {
           &
           <a
             href="https://fresh.deno.dev/"
-            class="flex hover:underline hover:text-gray-600 gap-[2px] items-center"
+            class={`flex hover:underline gap-[2px] items-center hover:${lightModeTextHover} hover:dark:${darkModeTextHover}`}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Fresh"
@@ -38,8 +39,8 @@ export function Footer() {
           </a>
         </div>
         <a
-          href="https://github.com/hayapo"
-          class="inline-block hover:text-gray-600"
+          href="https://github.com/hayapo/deno-my-page"
+          class={`inline-block hover:${lightModeTextHover} hover:dark:${darkModeTextHover}}`}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub"

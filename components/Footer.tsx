@@ -6,7 +6,7 @@ import { darkModeTextHover, lightModeTextHover } from "../lib/constants.ts";
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer class="px-2 pb-4 font-mono text-center my-auto">
+    <footer class="px-2 pb-4 font-mono text-center mt-auto">
       <div class="flex flex-col gap-3 text-md items-center">
         <p>
           © {year} hayapo all rights reserved.

@@ -39,7 +39,7 @@ export function NavBar({ isJapanese, isAbout }: NavBarProps) {
           </li>
         </ul>
         <div class="hidden md:flex md:flex-1 md:justify-end">
-          <ThemeSwitchButton />
+          <ThemeSwitchButton prev="dark" />
         </div>
       </nav>
     </>

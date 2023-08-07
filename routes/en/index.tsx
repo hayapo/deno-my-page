@@ -54,7 +54,7 @@ export default function About({ url, data }: PageProps<ProfileType | null>) {
 function Avator() {
   return (
     <img
-      class="mt-3 border-4 rounded-[100%] border-gray-400"
+      class="border-4 rounded-[100%] border-gray-400"
       src="/avator_icon.svg"
       width="250"
       height="250"

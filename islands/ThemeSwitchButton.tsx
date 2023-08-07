@@ -1,16 +1,20 @@
 import { useEffect, useState } from "preact/hooks";
+import { IS_BROWSER } from "$fresh/runtime.ts";
 
 type ThemeSwitchButtonProps = {
-  prev: boolean;
+  prev: "dark" | "light";
 };
 
 type Theme = "light" | "dark";
-export function ThemeSwitchButton() {
+export function ThemeSwitchButton(props: ThemeSwitchButtonProps) {
   const systemisDark = window &&
     window.matchMedia &&
     window.matchMedia("(prefers-color-scheme: dark)").matches;
 
   function getTheme() {
+    if (!IS_BROWSER) {
+      return props.prev;
+    }
     if (localStorage.theme === "dark") {
       return "dark";
     } else if (localStorage.theme) {

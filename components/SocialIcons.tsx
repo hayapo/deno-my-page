@@ -9,17 +9,17 @@ export function SocialIcons() {
   const socialIcons = [
     {
       name: "GitHub",
-      icon: <IconBrandGithub className={`w-${iconSize} h-${iconSize} stroke-1`} />,
+      icon: <IconBrandGithub class="size-9 stroke-1" />,
       url: `https://github.com/${socials.githubId}`,
     },
     {
       name: "Twitter",
-      icon: <IconBrandTwitter className={`w-${iconSize} h-${iconSize} stroke-1`} />,
+      icon: <IconBrandTwitter class="size-9 stroke-1" />,
       url: `https://x.com/${socials.twitterId}`
     },
     {
       name: "Mastodon",
-      icon: <IconBrandMastodon className={`w-${iconSize} h-${iconSize} stroke-1`} />,
+      icon: <IconBrandMastodon class="size-9 stroke-1" />,
       url: `https://mstdn.jp/@${socials.mastodonId}`,
     },
     {
@@ -29,7 +29,7 @@ export function SocialIcons() {
     },
     {
       name: "Discord",
-      icon: <IconBrandDiscord className={`w-${iconSize} h-${iconSize} stroke-1`} />,
+      icon: <IconBrandDiscord class="size-9 stroke-1" />,
       url: `https://discordapp.com/users/${socials.discordId}`,
     },
     {
@@ -44,7 +44,7 @@ export function SocialIcons() {
       {socialIcons.map((social) => (
         <a
           href={social.url}
-          class="inline-block hover:text-gray-500 hover:dark:text-gray-400"
+          class="inline-block hover:text-gray-700"
           key={social.name}
           aria-label={social.name}
           target="_blank"
@@ -70,7 +70,7 @@ function BlueskyLogo() {
 function ZennLogo() {
   return (
   <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns-xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 88.3 88.3" style="enable-background:new 0 0 88.3 88.3;" xml-space="preserve">
-  <g fill="#FFF">
+  <g fill="currentColor">
     <path class="st0" d="M3.9,83.3h17c0.9,0,1.7-0.5,2.2-1.2L69.9,5.2c0.6-1-0.1-2.2-1.3-2.2H52.5c-0.8,0-1.5,0.4-1.9,1.1L3.1,81.9
       C2.8,82.5,3.2,83.3,3.9,83.3z"/>
     <path class="st0" d="M62.5,82.1l22.1-35.5c0.7-1.1-0.1-2.5-1.4-2.5h-16c-0.6,0-1.2,0.3-1.5,0.8L43,81.2c-0.6,0.9,0.1,2.1,1.2,2.1

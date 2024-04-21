@@ -1,115 +1,67 @@
-import { Handlers, PageProps } from "$fresh/server.ts";
-import { ProfileType, TimelineItemType } from "../types/index.ts";
+import { CareerTimelineItemType } from "../types/index.ts";
 import { CustomHead as Head } from "../components/index.ts";
-import {
-  microcmsClient,
-  ParseCareerDate,
-  sortAffiliationEvents,
-} from "../lib/index.ts";
+import { careerTimelineJa, sortCareerTimeline } from "../lib/index.ts";
 
 const ENDPOINT = "profile_jp";
-const cache: Record<string, ProfileType> = {};
 
-export const handler: Handlers<ProfileType | null> = {
-  async GET(_, ctx) {
-    if (cache[ENDPOINT]) {
-      return ctx.render(cache[ENDPOINT]);
-    }
+console.log(careerTimelineJa);
 
-    const profileData = await microcmsClient.get({
-      endpoint: ENDPOINT,
-      queries: { limit: 99 },
-    });
-    cache[ENDPOINT] = profileData;
-    return ctx.render(profileData);
-  },
-};
-
-export default function Career({ data }: PageProps<ProfileType | null>) {
-  if (!data || data.careers.length === 0) return <h1>Bio data not found</h1>;
-  const parsedCareers = data.careers.map((career) => ParseCareerDate(career));
-  const timelineItems = sortAffiliationEvents(parsedCareers);
+export default function Career() {
   return (
     <>
       <Head title="Career" description="hayapo's career page" />
-      <CareerTimeline items={timelineItems} />
+      <CareerTimeline items={careerTimelineJa} />
     </>
   );
 }
 
-function CareerTimeline(props: { items: TimelineItemType[] }) {
-  const items = props.items;
+function CareerTimeline(props: { items: CareerTimelineItemType[] }) {
+  const careers = sortCareerTimeline(props.items);
   return (
     <div class="p-10 font-sans">
       <ul class="relative border-l border-gray-400">
-        {items.map((item, index) => (
-          <CareerTimelineItem
-            item={item}
-            index={index}
-          />
+        {careers.map((item) => (
+          <CareerTimelineItem item={item} />
         ))}
       </ul>
     </div>
   );
 }
 
-function CareerTimelineItem(props: { item: TimelineItemType; index: number }) {
-  const item = props.item;
-  const index = props.index;
-
-  const affiliationType = item.isUniversity ? "university" : "company";
-  const ongoingDateString = item.isAffiliationEnded ? "" : "-";
-  const eventDateString = CreateEventDateString(item.eventDate);
-  const eventStatusString = CreateStatusString(
-    item.itemType,
-    item.isUniversity,
-  );
-
+function CareerTimelineItem(props: { item: CareerTimelineItemType }) {
   return (
     <li
-      key={`${affiliationType}-${index}`}
-      class="items-center mb-10 ml-4"
+      key={props.item.id}
+      class="items-center mb-10 ml-5"
     >
-      <div class="absolute w-4 h-4 bg-gray-200 rounded-full mt-1.5 -left-[0.510rem] border border-gray-100 dark:border-gray-600">
+      <div class="absolute w-4 h-4 bg-gray-200 rounded-full mt-1.5 -left-[0.53rem] border border-gray-100 dark:border-gray-600">
       </div>
-      <time
-        dateTime={`${item.eventDate.getFullYear()}-${
-          item.eventDate.getMonth() + 1
-        }`}
-        class="mb-1 text-xl"
-      >
-        {eventDateString + ongoingDateString}
-      </time>
-      <h3 class="text-2xl font-semibold">
-        {item.affiliationName + " " + eventStatusString}
-      </h3>
-      {item.universityInfo && (
-        <p class="text-gray-500 dark:text-gray-300 text-lg">
-          {item.universityInfo[0]?.facultyOrDepartment + " " +
-            item.universityInfo[0]?.major}
+      <div class="flex flex-col gap-2">
+        <CareerDate career={props.item} />
+        <h3 class="text-3xl font-semibold">
+          {props.item.affiliationName}
+        </h3>
+        <p class="text-gray-500 dark:text-gray-300 text-xl">
+          {props.item.affiliationDetail}
         </p>
-      )}
+      </div>
     </li>
   );
 }
 
-function CreateEventDateString(eventDate: Date) {
+function CareerDate(props: {career: CareerTimelineItemType}) {
+  return (
+    props.career.endedAt ? (
+      <span class="mb-1 text-2xl">{CreateCareerDateString(props.career.startedAt)} - {CreateCareerDateString(props.career.endedAt)}</span>
+    ) : (
+      <span class="mb-1 text-2xl">{CreateCareerDateString(props.career.startedAt)} -</span>
+    )
+  )
+}
+
+function CreateCareerDateString(eventDate: Date) {
   const year = eventDate.getFullYear();
   const month = eventDate.getMonth() + 1;
   const day = eventDate.getDate();
   return `${year}/${month}/${day}`;
-}
-
-function CreateStatusString(
-  status: TimelineItemType["itemType"],
-  isUniversity: boolean,
-) {
-  switch (status) {
-    case "start":
-      return isUniversity ? "入学" : "入社";
-    case "end":
-      return isUniversity ? "卒業" : "退社";
-    default:
-      return "";
-  }
 }

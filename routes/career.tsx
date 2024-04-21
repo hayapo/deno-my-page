@@ -4,8 +4,6 @@ import { careerTimelineJa, sortCareerTimeline } from "../lib/index.ts";
 
 const ENDPOINT = "profile_jp";
 
-console.log(careerTimelineJa);
-
 export default function Career() {
   return (
     <>

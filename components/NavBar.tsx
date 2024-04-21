@@ -1,4 +1,3 @@
-import { ThemeSwitchButton } from "../islands/ThemeSwitchButton.tsx";
 import { LangSwitch } from "./LangSwitch.tsx";
 
 type NavBarProps = {

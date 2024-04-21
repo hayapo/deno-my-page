@@ -11,7 +11,7 @@ export function Layout({ pathName, children }: LayoutProps) {
   const isJapanese = pathName.substring(1, 3) !== "en";
   const isAbout = pathName === "/" || pathName === "/en";
   return (
-    <div class="min-h-screen flex flex-col items-center">
+    <div class="min-h-screen flex flex-col items-center bg-gray-500 text-white">
       <NavBar isJapanese={isJapanese} isAbout={isAbout} />
       <main class="max-w-screen-lg m-auto flex flex-col px-9 lg:px-0 py-5">
         {children}

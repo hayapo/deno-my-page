@@ -7,7 +7,6 @@ import * as $_app from "./routes/_app.tsx";
 import * as $api_joke from "./routes/api/joke.ts";
 import * as $blog_index from "./routes/blog/index.ts";
 import * as $career from "./routes/career.tsx";
-import * as $entry_index from "./routes/entry/index.ts";
 import * as $greet_name_ from "./routes/greet/[name].tsx";
 import * as $index from "./routes/index.tsx";
 
@@ -20,7 +19,6 @@ const manifest = {
     "./routes/api/joke.ts": $api_joke,
     "./routes/blog/index.ts": $blog_index,
     "./routes/career.tsx": $career,
-    "./routes/entry/index.ts": $entry_index,
     "./routes/greet/[name].tsx": $greet_name_,
     "./routes/index.tsx": $index,
   },
